@@ -1,0 +1,5 @@
+name = Islandora DB Export
+description = "Allow administrators to export database tables "
+package = Islandora
+dependencies[] = islandora
+core = 7.x

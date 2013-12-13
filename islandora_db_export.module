@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @file
+ * Module to export DB tables.
+ */
+
+define('ISLANDORA_DB_EXPORT_ADMIN', 'admin/islandora/islandora_db_export');
+define('ISLANDORA_DB_EXPORT_FORM', 'admin/structure/islandora_db/islandora_db_export');
+define('ISLANDORA_DB_IMPORT_FORM', 'admin/structure/islandora_db/islandora_db_import');
+
+/**
+ * Implements hook_menu().
+ */
+function islandora_db_export_menu() {
+  $items = array();
+
+  $items[ISLANDORA_DB_EXPORT_ADMIN] = array(
+    'title' => 'Islandora DB Export',
+    'description' => 'Configure settings for the DB export.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('islandora_db_export_admin_form'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'includes/admin.form.inc',
+  );
+  
+  $items[ISLANDORA_DB_EXPORT_FORM] = array(
+    'title' => 'Islandora DB Export',
+    'description' => 'Export database tables.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('islandora_db_export_form'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'includes/export.form.inc',
+  );
+  $items[ISLANDORA_DB_IMPORT_FORM] = array(
+    'title' => 'Islandora DB Import',
+    'description' => 'Import database tables.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('islandora_db_export_import_form'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'includes/import.form.inc',
+  );
+
+  return $items;
+}
